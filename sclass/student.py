@@ -1,10 +1,28 @@
 from sclass.departments import departments
 
 class students(departments):
-    def __init__(self, name='N/A', surname='N/A'):
-        print("Student initialization")
-        self._name = name
-        self._surname = surname
+    def __init__(self, *args):
+        print("Student initialization with %d parameter" % len(args))
+        try:
+            self._surname = 'N/A'
+            self._name = 'N/A'
+            print (args)
+            if (len(args) == 0):
+                raise RuntimeError('Specify Name / Surname')
+            elif (len(args) == 1):
+                raise RuntimeError('Specify Surname as well')
+            else:
+                pass
+                self._name = args[0]
+                self._surname = args[1]
+        except RuntimeError as r:
+            print("Missing Arguments:", r)
+        except AttributeError as a:
+            print("Attributes are missing", a)
+        except:
+            print ('Unknown Error')
+
+
 
     def register(self, sname, ssurname):
         try:
@@ -48,14 +66,14 @@ class students(departments):
         else:
             return 0
 
-    def set_name(self, name):
-        self._name = name
+    def set_name(self):
+        self.name = self._name
 
     def get_name(self):
-        return self._name
+        return self.name
 
-    def set_surname(self, surname):
-        self._surname = surname
+    def set_surname(self):
+        self.surname = self._surname
 
     def get_surname(self):
-        return self._surname
+        return self.surname
