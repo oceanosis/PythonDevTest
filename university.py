@@ -1,5 +1,7 @@
 import sclass.student as s
 
+# Test for git, jenkins, python pipeline
+
 def main():
         student1 = s.students('aaa')
         student1.set_name()
